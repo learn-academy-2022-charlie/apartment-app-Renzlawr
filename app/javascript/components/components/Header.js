@@ -1,19 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Nav, NavItem } from 'reactstrap'
 
-class Header extends Component {
-  render() {
-    const {
+ const Header = props => {
+  const {
       logged_in,
       current_user,
       new_user_route,
       sign_in_route,
       sign_out_route
-    } = this.props
+    } = props
     console.log("logged_in:", logged_in)
     console.log("current_user:", current_user)
-    return (
-      <>
+  return (
+    <>
         <h1>React in Rails with Devise</h1>
         <Nav>
           {logged_in &&
@@ -33,7 +32,7 @@ class Header extends Component {
           }
         </Nav>
       </>
-    )
-  }
+  )
 }
+
 export default Header
