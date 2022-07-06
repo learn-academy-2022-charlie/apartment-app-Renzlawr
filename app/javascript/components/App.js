@@ -7,6 +7,7 @@ import ApartmentShow from './pages/ApartmentShow'
 import ApartmentNew from './pages/ApartmentNew'
 import ApartmentEdit from './pages/ApartmentEdit'
 import NotFound from './pages/NotFound'
+import About from './pages/About'
 import {
   BrowserRouter as Router,
   Route,
@@ -24,6 +25,7 @@ const App = props => {
         <Route path="/apartmentshow" element={<ApartmentShow />} />
         <Route path="/apartmentnew" element={<ApartmentNew />} />
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
+        <Route path="/about" element={<About />} />
         <Route element={<NotFound />}/>
       </Routes>
       <Footer />
