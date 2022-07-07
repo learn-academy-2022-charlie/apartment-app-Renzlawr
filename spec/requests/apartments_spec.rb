@@ -23,7 +23,31 @@ RSpec.describe "Apartments", type: :request do
 
       apartments = JSON.parse(response.body)
       expect(response).to have_http_status(200)
-      expect(apartments.length).to eq(1)
+    end
+  end
+
+  describe "POST /create" do
+
+    user = User.where(email: 'test1@gmail.com').first_or_create(password: '123123', password_confirmation: '123123')
+
+    it 'can create an apartment' do
+      apartment_params = {
+        street: "1234 this is a test",
+        city: "chicken",
+        state: "Kentucky",
+        manager: "Colonel Sanders",
+        email: "fingerlickingood@kfc.com", 
+        price: "$2000", 
+        bedrooms: "3", 
+        bathrooms: "2", 
+        pets: "chickens allowed, however they may go missing",
+        image: "https://dynl.mktgcdn.com/p/r5XbuSxbUYgVfHDYkzTVPNc8_SXK-xHiHzBpy3SW2p0/1900x1425.jpg",
+        user: user.id
+      }
+
+      post '/apartments', params: apartment_params
+
+      expect(response.status).to eq 200
     end
   end
 end

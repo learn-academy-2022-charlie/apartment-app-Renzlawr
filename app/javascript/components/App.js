@@ -33,6 +33,19 @@ const App = props => {
       
     }
   }, [])
+
+  const createApartment = (newApartment) => {
+    fetch("/apartmentnew", {
+      body: JSON.stringify(newApartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => response.json())
+    .then(payload => setApartments(readApartment()))
+    .catch(errors => console.log("Apartment create errors: ", errors))
+  }
   
   const { current_user } = props
 
@@ -44,7 +57,7 @@ const App = props => {
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments}/>} />
         <Route path="/apartmentindexprotected" element={<ApartmentIndexProtected apartments={apartments} user={current_user}/> } />
         <Route path="/apartmentshow" element={<ApartmentShow />} />
-        <Route path="/apartmentnew" element={<ApartmentNew />} />
+        <Route path="/apartmentnew" element={<ApartmentNew user={current_user}/>} createApartment={createApartment}/>
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
         <Route path="/about" element={<About />} />
         <Route element={<NotFound />}/>
