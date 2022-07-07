@@ -24,5 +24,6 @@ RSpec.describe "Apartments", type: :request do
       apartments = JSON.parse(response.body)
       expect(response).to have_http_status(200)
       expect(apartments.length).to eq(1)
+    end
   end
 end
