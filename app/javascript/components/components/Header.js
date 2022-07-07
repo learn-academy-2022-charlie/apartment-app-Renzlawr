@@ -1,7 +1,8 @@
 import React from 'react'
 // import { Nav, NavItem } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
-
+import Navbar from 'react-bootstrap/Navbar'
+import { Nav } from 'react-bootstrap'
 
  const Header = props => {
   const {
@@ -24,6 +25,7 @@ import { NavLink } from 'react-router-dom'
             {logged_in &&
             <div id="navbar-user-links">
               <p className="nav-link">{current_user.email}</p>
+              <NavLink className="nav-link" to="apartmentindexprotected">My Apartments</NavLink>
               <Nav.Link href={sign_out_route} className="nav-link">
                 Sign Out
               </Nav.Link>

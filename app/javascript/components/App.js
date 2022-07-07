@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import ApartmentIndex from './pages/ApartmentIndex'
+import ApartmentIndexProtected from './pages/ApartmentIndexProtected';
 import ApartmentShow from './pages/ApartmentShow'
 import ApartmentNew from './pages/ApartmentNew'
 import ApartmentEdit from './pages/ApartmentEdit'
@@ -19,18 +20,21 @@ const App = props => {
 
   const [apartments, setApartments] = useState([])
 
+  
   useEffect(() => {
     const readApartment = async () => {
-        const apartments = await fetch("/apartments")
-        apartments.json()
-        .then(response => setApartments(response))
-        .catch(errors => console.log(errors))
+      const apartments = await fetch("/apartments")
+      apartments.json()
+      .then(response => setApartments(response))
+      .catch(errors => console.log(errors))
     }
     readApartment()
     return () => {
       
     }
   }, [])
+  
+  const { current_user } = props
 
   return (
     <Router>
@@ -38,6 +42,7 @@ const App = props => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments}/>} />
+        <Route path="/apartmentindexprotected" element={<ApartmentIndexProtected apartments={apartments} user={current_user}/> } />
         <Route path="/apartmentshow" element={<ApartmentShow />} />
         <Route path="/apartmentnew" element={<ApartmentNew />} />
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
