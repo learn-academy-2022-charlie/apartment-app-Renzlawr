@@ -1,13 +1,6 @@
 import React from 'react'
-import {
-  Card, 
-  CardImg,
-  CardText, 
-  CardBody,
-  CardTitle, 
-  CardSubtitle, 
-  Button
-} from 'reactstrap';
+import Card from 'react-bootstrap/Card';
+import { Button } from 'react-bootstrap'
 
 const ApartmentIndex = props => {
 
@@ -15,25 +8,27 @@ const ApartmentIndex = props => {
 
   return (
     <div>
-      <h1>Apartments:</h1>
-      {apartments && apartments.map((apartment) => {
+      <h1>Ratpartments:</h1>
+      {apartments && apartments.map(apartment => {
         return(
-          <Card key={apartment.id}>
-            <CardImg src={apartment.image} alt="Card image cap" />
-            <CardBody>
-              <CardTitle>{apartment.street}</CardTitle>
-              <CardSubtitle>{apartment.city}</CardSubtitle>
-              <CardText>{apartment.state}</CardText>
-              <CardText>{apartment.manager}</CardText>
-              <CardText>{apartment.price}</CardText>
-              <CardText>{apartment.bedrooms}</CardText>
-              <CardText>{apartment.bathrooms}</CardText>
-              <CardText>{apartment.pets}</CardText>
-              <Button>Button</Button>
-            </CardBody>
-          </Card>
+              <Card key={apartment.id}>
+                <Card.Img src={apartment.image} alt="Card image cap" />
+                <Card.Body>
+                  <Card.Title>Apartment #{apartment.id}</Card.Title>
+                  <Card.Text>Street: {apartment.street}</Card.Text>
+                  <Card.Text>City: {apartment.city}</Card.Text>
+                  <Card.Text>State: {apartment.state}</Card.Text>
+                  <Card.Text>Manager: {apartment.manager}</Card.Text>
+                  <Card.Text>Price: {apartment.price}</Card.Text>
+                  <Card.Text>Bedrooms: {apartment.bedrooms}</Card.Text>
+                  <Card.Text>Bathrooms: {apartment.bathrooms}</Card.Text>
+                  <Card.Text>Pets: {apartment.pets}</Card.Text>
+                  <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+              </Card>
+          )}
         )
-      })}
+      }
     </div>
   )
 }
