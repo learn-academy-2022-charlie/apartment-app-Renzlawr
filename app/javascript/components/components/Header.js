@@ -1,7 +1,7 @@
 import React from 'react'
 // import { Nav, NavItem } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav, Container } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import './Header.scss'
 
  const Header = props => {
@@ -11,7 +11,6 @@ import './Header.scss'
       new_user_route,
       sign_in_route,
       sign_out_route,
-
     } = props
     console.log("logged_in:", logged_in)
     console.log("current_user:", current_user)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -16,12 +16,28 @@ import {
 
 
 const App = props => {
+
+  const [apartments, setApartments] = useState([])
+
+  useEffect(() => {
+    const readApartment = async () => {
+        const apartments = await fetch("/apartments")
+        apartments.json()
+        .then(response => setApartments(response))
+        .catch(errors => console.log(errors))
+    }
+    readApartment()
+    return () => {
+      
+    }
+  }, [])
+
   return (
     <Router>
       <Header {...props} />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/apartmentindex" element={<ApartmentIndex />} />
+        <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments}/>} />
         <Route path="/apartmentshow" element={<ApartmentShow />} />
         <Route path="/apartmentnew" element={<ApartmentNew />} />
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
