@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Nav, NavItem } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import { Nav } from 'react-bootstrap'
@@ -12,8 +11,7 @@ import { Nav } from 'react-bootstrap'
       sign_in_route,
       sign_out_route,
     } = props
-    console.log("logged_in:", logged_in)
-    console.log("current_user:", current_user)
+    
   return (
     <>
         <Navbar bg="dark" variant="dark">

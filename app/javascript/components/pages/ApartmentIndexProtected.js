@@ -5,8 +5,6 @@ import { Button } from 'react-bootstrap'
 const ApartmentsIndexProtected = props => {
 
   const { apartments, user } = props
-  console.log("pro", apartments)
-  console.log("pro", user)
 
   let protectedApartments = apartments.filter(apartment => apartment.user_id === user.id)
   return (
