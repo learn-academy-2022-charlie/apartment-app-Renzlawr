@@ -2,7 +2,6 @@ import React from 'react'
 // import { Nav, NavItem } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 import { Navbar, Nav, Container } from 'react-bootstrap'
-import './Header.scss'
 
  const Header = props => {
   const {

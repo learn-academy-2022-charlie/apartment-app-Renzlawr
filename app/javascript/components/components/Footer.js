@@ -2,7 +2,9 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div id="footer-container">
+      © Copyright Logan Ramos
+    </div>
   )
 }
 
