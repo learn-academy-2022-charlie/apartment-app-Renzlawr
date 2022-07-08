@@ -22,20 +22,21 @@ const App = props => {
 
   
   useEffect(() => {
-    const readApartment = async () => {
-      const apartments = await fetch("/apartments")
-      apartments.json()
-      .then(response => setApartments(response))
-      .catch(errors => console.log(errors))
-    }
     readApartment()
     return () => {
       
     }
   }, [])
 
+  const readApartment = async () => {
+    const apartments = await fetch("/apartments")
+    apartments.json()
+    .then(response => setApartments(response))
+    .catch(errors => console.log(errors))
+  }
+
   const createApartment = (newApartment) => {
-    fetch("/apartmentnew", {
+    fetch("/apartments", {
       body: JSON.stringify(newApartment),
       headers: {
         "Content-Type": "application/json"
@@ -57,7 +58,7 @@ const App = props => {
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments}/>} />
         <Route path="/apartmentindexprotected" element={<ApartmentIndexProtected apartments={apartments} user={current_user}/> } />
         <Route path="/apartmentshow" element={<ApartmentShow />} />
-        <Route path="/apartmentnew" element={<ApartmentNew user={current_user}/>} createApartment={createApartment}/>
+        <Route path="/apartmentnew" element={<ApartmentNew user={current_user}/>} createApartment={createApartment} readApartment={readApartment}/>
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
         <Route path="/about" element={<About />} />
         <Route element={<NotFound />}/>

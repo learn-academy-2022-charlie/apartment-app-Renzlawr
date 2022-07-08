@@ -8,16 +8,16 @@ const ApartmentNew = props => {
 
   const [submit, setSubmit] = useState(false)
   const [form, setForm] = useState({
-      // street: "",
-      // city: "",
-      // state: "",
-      // manager: "",
-      // email: "",
-      // price: "",
-      // bedrooms: "",
-      // bathrooms: "",
-      // pets: "",
-      // image: "",
+      street: "",
+      city: "",
+      state: "",
+      manager: "",
+      email: "",
+      price: "",
+      bedrooms: null,
+      bathrooms: null,
+      pets: "",
+      image: "",
       user_id: props.user.id
   })
 
@@ -29,9 +29,19 @@ const ApartmentNew = props => {
     console.log(form)
   }
 
-  const handleSubmit = () => {
+  const handleIntChange = (e) => {
+    let targetName = e.target.name
+    let targetValue = e.target.value
+    form[targetName] = parseInt(targetValue)
+    setForm(form)
+    console.log(form)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
     props.createApartment(form)
-    setSubmit(!submit)
+    props.readApartment()
+    setSubmit(true)
   }
 
   return (
@@ -60,11 +70,11 @@ const ApartmentNew = props => {
         </Form.Group>
         <Form.Group>
           <Form.Label>Bedrooms</Form.Label>
-          <Form.Control name="bedrooms" placeholder="Enter bedrooms" onChange={handleChange} />
+          <Form.Control name="bedrooms" type="number" placeholder="Enter bedrooms" onChange={handleIntChange} />
         </Form.Group>
         <Form.Group>
           <Form.Label>Bathrooms</Form.Label>
-          <Form.Control name="bathrooms" placeholder="Enter bathrooms" onChange={handleChange} />
+          <Form.Control name="bathrooms" type="number" placeholder="Enter bathrooms" onChange={handleIntChange} />
         </Form.Group>
         <Form.Group>
           <Form.Label>Pets</Form.Label>
@@ -74,7 +84,7 @@ const ApartmentNew = props => {
           <Form.Label>Image</Form.Label>
           <Form.Control name="image" placeholder="Enter image address" onChange={handleChange} />
         </Form.Group>
-        <Button onClick={() => handleSubmit} variant="primary" type="submit">
+        <Button onClick={() => handleSubmit()} variant="primary" type="submit">
           Submit
         </Button>
         {submit === true ? <Navigate replace to="/apartmentindexprotected" /> : null}

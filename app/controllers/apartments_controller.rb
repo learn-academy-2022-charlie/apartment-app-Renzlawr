@@ -9,7 +9,7 @@ class ApartmentsController < ApplicationController
         if apartment.valid?
             render json: apartment
         else
-            render json: apartment, status: 422
+            render json: apartment.errors, status: 422
         end
     end
   
@@ -21,6 +21,6 @@ class ApartmentsController < ApplicationController
 
     private
     def apartment_params
-        params.require(:apartments).permit(:city, :state, :manager, :email, :price, :bedrooms, :bathrooms, :pets, :image, :user_id)
+        params.require(:apartment).permit(:street, :city, :state, :manager, :email, :price, :bedrooms, :bathrooms, :pets, :image, :user_id)
     end
 end
