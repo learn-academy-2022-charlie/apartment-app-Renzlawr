@@ -8,16 +8,6 @@ const ApartmentNew = props => {
 
   const [submit, setSubmit] = useState(false)
   const [form, setForm] = useState({
-      street: "",
-      city: "",
-      state: "",
-      manager: "",
-      email: "",
-      price: "",
-      bedrooms: null,
-      bathrooms: null,
-      pets: "",
-      image: "",
       user_id: props.user.id
   })
 
@@ -26,7 +16,6 @@ const ApartmentNew = props => {
     let targetValue = e.target.value
     form[targetName] = targetValue
     setForm(form)
-    console.log(form)
   }
 
   const handleIntChange = (e) => {
@@ -34,13 +23,10 @@ const ApartmentNew = props => {
     let targetValue = e.target.value
     form[targetName] = parseInt(targetValue)
     setForm(form)
-    console.log(form)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = () => {
     props.createApartment(form)
-    props.readApartment()
     setSubmit(true)
   }
 
@@ -49,8 +35,12 @@ const ApartmentNew = props => {
       <h1>Add your apartment!</h1>
       <Form>
         <Form.Group>
+          <Form.Label>Street</Form.Label>
+          <Form.Control name="street" placeholder="Enter street" onChange={handleChange}/>
+        </Form.Group>
+      <Form.Group>
           <Form.Label>City</Form.Label>
-          <Form.Control name="street" placeholder="Enter city" onChange={handleChange}/>
+          <Form.Control name="city" placeholder="Enter city" onChange={handleChange}/>
         </Form.Group>
         <Form.Group>
           <Form.Label>State</Form.Label>
