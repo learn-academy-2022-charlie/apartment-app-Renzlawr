@@ -18,12 +18,12 @@ import { Nav } from 'react-bootstrap'
           <Nav>
             <NavLink className="nav-link" to="/">Home</NavLink>
             <NavLink className="nav-link" to="/apartmentindex">Apartments</NavLink>
-            <NavLink className="nav-link" to="apartmentnew">Add Listing</NavLink>
             <NavLink className="nav-link" to="about">About</NavLink>
             {logged_in &&
             <div id="navbar-user-links">
-              <p className="nav-link">{current_user.email}</p>
+              <NavLink className="nav-link" to="apartmentnew">Add Listing</NavLink>
               <NavLink className="nav-link" to="apartmentindexprotected">My Apartments</NavLink>
+              <p className="nav-link">{current_user.email}</p>
               <Nav.Link href={sign_out_route} className="nav-link">
                 Sign Out
               </Nav.Link>
