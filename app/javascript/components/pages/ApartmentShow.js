@@ -6,8 +6,8 @@ import { useParams } from 'react-router-dom'
 const ApartmentShow = props => {
   const { apartments, logged_in, current_user } = props
   let { id } = useParams()
-  let apartment = apartments.find(apartment => apartment.id == id)
-  let usersApartment = apartments.find(apartment => apartment.id == id && apartment.user_id === current_user.id) 
+  let apartment = apartments.find(apartment => apartment.id === +id)
+  let usersApartment = apartments.find(apartment => apartment.id === +id && apartment.user_id === current_user.id) 
   return (
     <>
     <h1>Now Viewing: </h1>
